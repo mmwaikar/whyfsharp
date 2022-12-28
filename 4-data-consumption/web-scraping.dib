@@ -1,0 +1,33 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"fsharp","items":[{"name":"fsharp","languageName":"F#","aliases":["f#","F#"]},{"name":"csharp","languageName":"C#","aliases":["c#","C#"]},{"name":"vscode","aliases":["frontend"],"languageName":null},{"name":"javascript","languageName":"JavaScript","aliases":["js"]},{"name":"webview","aliases":[]}]}}
+
+#!fsharp
+
+#r "nuget: FSharp.Data, 5.0.2"
+
+#!fsharp
+
+open FSharp.Data
+
+#!fsharp
+
+[<Literal>]
+let url = "https://standards.cencenelec.eu/dyn/www/f?p=CEN:105::RESET::::"
+type Cenelec = HtmlProvider<url>
+
+#!fsharp
+
+let selectId = "ICS_LIST"
+let body = Cenelec.Load(url).Html.Body()
+
+#!fsharp
+
+let allSelects = body.Descendants["select"]
+let icsListData = body.CssSelect "select#ICS_LIST"
+let options = icsListData.Head.Descendants["option"]
+let optionValues = options |> Seq.map (fun o -> o.InnerText())
+
+#!fsharp
+
+optionValues |> Seq.iter (fun o -> printfn $"{o}")
