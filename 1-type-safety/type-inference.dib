@@ -1,0 +1,60 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"csharp","items":[{"name":"csharp","aliases":[]},{"name":".NET","languageName":null,"aliases":[]},{"name":"vscode","languageName":null,"aliases":["frontend"]}]}}
+
+#!markdown
+
+* F# has powerful type inference, because of which the compiler is able to **infer the type of method arguments and the return type of a method**.
+* Consequently, we can write code as we do with dynamic languages, without having to worry about types, but getting full type safety.
+
+#!fsharp
+
+let sum a b = a + b
+
+#!markdown
+
+The type signature of the above method is inferred to be as int -> int -> int, hence the below statement does not compile.
+
+#!fsharp
+
+let five = sum 2.0 3
+
+#!markdown
+
+If we want, we can explicitly specify type for one or more of the arguments.
+
+#!fsharp
+
+let sumD a (b: double) = a + b
+
+#!markdown
+
+Now we can add two doubles.
+
+#!fsharp
+
+let fiveD = sumD 2.0 3
+
+#!markdown
+
+### Currying
+
+#!markdown
+
+Every function is by default curried, which means, that if you specify less than the required number of arguments, then you get a function with those many less arguments (as you've specified).
+
+#!fsharp
+
+let add2 = sum 2
+
+#!markdown
+
+The type signature of add2 is int -> int, so now we can have 2 added to any number we pass to add2.
+
+#!fsharp
+
+let six = add2 4
+
+#!markdown
+
+So, in short, you get the best of both worlds - you can write code as if you are working in a dynamic language; without having to worry about types, and only adding types when required, but getting full compile time safety.
