@@ -1,6 +1,6 @@
 #!meta
 
-{"kernelInfo":{"defaultKernelName":"csharp","items":[{"name":"csharp","aliases":["c#","C#"],"languageName":"C#"},{"name":".NET","aliases":[],"languageName":null},{"name":"vscode","aliases":["frontend"],"languageName":null}]}}
+{"kernelInfo":{"defaultKernelName":"csharp","items":[{"name":"csharp","aliases":["c#","C#"],"languageName":"C#"},{"name":".NET","aliases":[]},{"name":"vscode","aliases":["frontend"]},{"name":"fsharp","aliases":["f#","F#"],"languageName":"F#"},{"name":"html","aliases":[],"languageName":"HTML"},{"name":"http","aliases":[],"languageName":"HTTP"},{"name":"javascript","aliases":["js"],"languageName":"JavaScript"},{"name":"kql","aliases":[],"languageName":"KQL"},{"name":"mermaid","aliases":[],"languageName":"Mermaid"},{"name":"pwsh","aliases":["powershell"],"languageName":"PowerShell"},{"name":"sql","aliases":[],"languageName":"SQL"},{"name":"value","aliases":[]},{"name":"webview","aliases":[]}]}}
 
 #!markdown
 
