@@ -1,6 +1,6 @@
 #!meta
 
-{"kernelInfo":{"defaultKernelName":"csharp","items":[{"name":"csharp","aliases":["c#","C#"],"languageName":"C#"},{"name":"vscode","aliases":["frontend"]},{"name":"mermaid","aliases":[],"languageName":"Mermaid"},{"name":"javascript","aliases":["js"],"languageName":"JavaScript"},{"name":"webview","aliases":[]},{"name":".NET","aliases":[]},{"name":"fsharp","aliases":["f#","F#"],"languageName":"F#"},{"name":"html","aliases":[],"languageName":"HTML"},{"name":"http","aliases":[],"languageName":"HTTP"},{"name":"kql","aliases":[],"languageName":"KQL"},{"name":"pwsh","aliases":["powershell"],"languageName":"PowerShell"},{"name":"sql","aliases":[],"languageName":"SQL"},{"name":"value","aliases":[]}]}}
+{"kernelInfo":{"defaultKernelName":"csharp","items":[{"name":"csharp","languageName":"C#","aliases":["c#","C#"]},{"name":"vscode","aliases":["frontend"],"languageName":null},{"name":"mermaid","languageName":"Mermaid","aliases":[]},{"name":"javascript","languageName":"JavaScript","aliases":["js"]},{"name":"webview","aliases":[]},{"name":".NET","aliases":[]},{"name":"fsharp","languageName":"F#","aliases":["f#","F#"]},{"name":"html","languageName":"HTML","aliases":[]},{"name":"http","languageName":"HTTP","aliases":[]},{"name":"kql","languageName":"KQL","aliases":[]},{"name":"pwsh","languageName":"PowerShell","aliases":["powershell"]},{"name":"sql","languageName":"SQL","aliases":[]},{"name":"value","aliases":[],"languageName":null}]}}
 
 #!markdown
 
@@ -50,22 +50,3 @@ Yes.
 
   - (1) Cross platform UIs
     - [Flutter](https://flutter.dev/)
-
-#!markdown
-
-### Multi platform UIs
-
-| Language | Frameworks |
-|----------|------------|
-| [Dart](https://dart.dev/) | [Flutter](https://flutter.dev/) |
-| C# | [Uno Platform](https://platform.uno/), [Avalonia UI](https://avaloniaui.net/), [MAUI](https://learn.microsoft.com/en-us/dotnet/maui/what-is-maui?view=net-maui-7.0) |
-
-#!markdown
-
-### Types of applications
-
-- Browser based UIs
-- Mobile clients
-- Desktop applications
-- REST APIs
-- All kinds of backend stuff
