@@ -1,0 +1,71 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"csharp","items":[{"name":"csharp","languageName":"C#","aliases":["c#","C#"]},{"name":"vscode","aliases":["frontend"],"languageName":null},{"name":"mermaid","languageName":"Mermaid","aliases":[]},{"name":"javascript","aliases":["js"],"languageName":"JavaScript"},{"name":"webview","aliases":[]}]}}
+
+#!markdown
+
+# Tech Stack
+
+#!markdown
+
+It's **2023** and I want to develop all of the below kinds of applications using a ***single programming language*** -
+
+1. Cross platform UIs (browser, mobile, dekstop)
+2. REST APIs / Backend applications
+3. AI / ML applications
+4. Scripts (similar to bash scripts)
+
+#!markdown
+
+## Are you kidding me? Is it even possible? Does any language come close?
+
+Yes.
+
+#!markdown
+
+### Oooh!! Which ones?
+
+- C#
+
+  - (1) Cross platform UIs
+    - [Uno Platform](https://platform.uno/) 
+    - [Avalonia UI](https://avaloniaui.net/)
+    - [MAUI](https://learn.microsoft.com/en-us/dotnet/maui/what-is-maui?view=net-maui-7.0)
+    - [Blazor](https://dotnet.microsoft.com/en-us/apps/aspnet/web-apps/blazor) - Use the power of .NET and C# to build full stack web apps without writing a line of JavaScript (using WebAssembly)
+
+  - (3) AI / ML applications
+    - [ML.NET](https://dotnet.microsoft.com/en-us/apps/machinelearning-ai/ml-dotnet), which is *An open source and cross-platform machine learning framework* we can write ML applications in .Net languages (C# & F#)
+    - [SciSharp STACK](https://scisharp.github.io/SciSharp/) is another .NET based Open Source Ecosystem for Data Science, Machine Learning and AI, which **brings all major ML / AI Frameworks from Python to .NET**.
+
+- F#
+
+  - (1) Cross platform UIs
+    - [Bolero](https://fsbolero.io/) uses Blazor to bring F# to WebAssembly
+
+  - (4) Scripts
+    - [Fli](https://github.com/CaptnCodr/Fli) - Execute CLI commands from your F# code in F# style!    
+
+
+- Dart
+
+  - (1) Cross platform UIs
+    - [Flutter](https://flutter.dev/)
+
+#!markdown
+
+### Multi platform UIs
+
+| Language | Frameworks |
+|----------|------------|
+| [Dart](https://dart.dev/) | [Flutter](https://flutter.dev/) |
+| C# | [Uno Platform](https://platform.uno/), [Avalonia UI](https://avaloniaui.net/), [MAUI](https://learn.microsoft.com/en-us/dotnet/maui/what-is-maui?view=net-maui-7.0) |
+
+#!markdown
+
+### Types of applications
+
+- Browser based UIs
+- Mobile clients
+- Desktop applications
+- REST APIs
+- All kinds of backend stuff
