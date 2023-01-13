@@ -4,7 +4,7 @@
 
 #!markdown
 
-# Desirable qualities in a Programming Language
+# Desirable features of a Programming Language
 
 #!markdown
 
@@ -17,6 +17,7 @@
 
 #### Other desirable features
 
+- I should be able to write a function without wrapping it in a class (Functional programming)
 - Value equality should be the default
 - Type Inference (for a statically typed language)
 - Discriminated unions (a pack of cards example)
