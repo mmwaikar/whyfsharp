@@ -43,7 +43,7 @@ I've used 3 FP languages, out of which 2 are on JVM and 1 on DotNet.
 
 # So why F#?
 
-- F# is a modern functional first, mixed FP-OO language from the ML family.
+- F# is a modern functional first, mixed FP-OO language from the ML family
 - Cross platform
 - Ability to compile to multiple targets (DotNet, JS, Rust, Python, Dart)
 - Strong type inference

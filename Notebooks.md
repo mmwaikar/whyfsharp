@@ -1,8 +1,8 @@
 # Notebook
 
-A Notebook is an environment with which you can create and share documents that contain live code, equations, visualizations, and text, commonly referred to as the **computational documents**.
+A Notebook is an environment with which you can create and share documents that contain *live code, equations, visualizations, and text*, commonly referred to as the **computational documents**.
 
-It offers a simple, streamlined, document-centric experience. Its flexible interface allows users to configure and arrange workflows in data science, scientific computing, computational journalism, and machine learning. A modular design invites extensions to expand and enrich functionality.
+It offers a simple, streamlined, document-centric experience. Its flexible interface allows users to **configure and arrange workflows in data science, scientific computing, computational journalism, and machine learning**. A modular design invites extensions to expand and enrich functionality.
 
 ## Jupyter
 

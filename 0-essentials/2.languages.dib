@@ -1,6 +1,6 @@
 #!meta
 
-{"kernelInfo":{"defaultKernelName":"csharp","items":[{"name":"csharp","languageName":"C#","aliases":["c#","C#"]},{"name":"kql","languageName":"KQL","aliases":[]},{"name":"vscode","aliases":["frontend"],"languageName":null},{"name":".NET","aliases":[]},{"name":"fsharp","languageName":"F#","aliases":["f#","F#"]},{"name":"html","languageName":"HTML","aliases":[]},{"name":"http","languageName":"HTTP","aliases":[]},{"name":"javascript","languageName":"JavaScript","aliases":["js"]},{"name":"mermaid","languageName":"Mermaid","aliases":[]},{"name":"pwsh","languageName":"PowerShell","aliases":["powershell"]},{"name":"sql","languageName":"SQL","aliases":[]},{"name":"value","aliases":[],"languageName":null},{"name":"webview","aliases":[]}]}}
+{"kernelInfo":{"defaultKernelName":"csharp","items":[{"name":"csharp","languageName":"C#","aliases":["c#","C#"]},{"name":"kql","languageName":"KQL","aliases":[]},{"name":"vscode","aliases":["frontend"],"languageName":null},{"name":".NET","aliases":[],"languageName":null},{"name":"fsharp","languageName":"F#","aliases":["f#","F#"]},{"name":"html","languageName":"HTML","aliases":[]},{"name":"http","languageName":"HTTP","aliases":[]},{"name":"javascript","languageName":"JavaScript","aliases":["js"]},{"name":"mermaid","languageName":"Mermaid","aliases":[]},{"name":"pwsh","languageName":"PowerShell","aliases":["powershell"]},{"name":"sql","languageName":"SQL","aliases":[]},{"name":"value","aliases":[]},{"name":"webview","aliases":[]}]}}
 
 #!markdown
 
@@ -8,7 +8,7 @@
 
 #!markdown
 
-- It should compile to multiple targets
+- It should compile to multiple targets (with JS being the secondary target, at the least)
 - It should have a REPL (Read-Eval-Print-Loop) [It should let me experiment with third party libraries in a REPL - a Notebook is just a visual REPL]
 - It should come from a family of languages (e.g. ML, Lisp etc., so when you understand the syntax for one of the languages in the family, you'll understand code written in other languages of the same family)
 - I should be able to write full-stack / AI / ML applications using the same language
