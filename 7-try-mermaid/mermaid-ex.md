@@ -1,4 +1,4 @@
-# Trying out mermain in GH MD files
+# Trying out mermaid in GH MD files
 
 Let's see if Mermaid diagrams (embedded in a MD file) show up in GitHub.
 
