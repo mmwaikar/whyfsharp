@@ -1,0 +1,41 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"csharp","items":[{"name":"csharp","languageName":"C#","aliases":["c#","C#"]},{"name":"mermaid","languageName":"Mermaid","aliases":[]},{"name":"vscode","aliases":["frontend"],"languageName":null},{"name":".NET","aliases":[]},{"name":"fsharp","languageName":"F#","aliases":["f#","F#"]},{"name":"html","languageName":"HTML","aliases":[]},{"name":"javascript","languageName":"JavaScript","aliases":["js"]},{"name":"kql","languageName":"KQL","aliases":[]},{"name":"pwsh","languageName":"PowerShell","aliases":["powershell"]},{"name":"sql","languageName":"SQL","aliases":[]},{"name":"value","aliases":[]},{"name":"webview","aliases":[]}]}}
+
+#!markdown
+
+# Problems with C#
+
+#!markdown
+
+- Older languages have no REPL (though you can use [dotnet-repl](https://github.com/jonsequitur/dotnet-repl)
+- C# (and Java) are built with wrong defaults
+
+#!markdown
+
+| Wrong (C#, Java) | Right (F#, Scala) |
+|------------------|-------------------|
+| Reference Equality | Value Equality |
+| Mutable collections | Immutable collections |
+
+#!markdown
+
+### So let's see some code in action
+
+#!csharp
+
+using static System.Console;
+
+#!csharp
+
+public class Emp 
+{
+    public string Name { get; set; }
+    public int Age { get; set; }
+}
+
+var e1 = new Emp { Name = "Abc", Age = 10 };
+var e2 = new Emp { Name = "Abc", Age = 10 };
+
+WriteLine($"e1: {e1}");
+WriteLine($"e1 == e2: {e1 == e2}");

@@ -1,0 +1,73 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"csharp","items":[{"name":"csharp","languageName":"C#","aliases":["c#","C#"]},{"name":"fsharp","languageName":"F#","aliases":["f#","F#"]},{"name":"vscode","aliases":["frontend"],"languageName":null}]}}
+
+#!markdown
+
+## So why not use Records?
+
+#!csharp
+
+using static System.Console;
+
+#!csharp
+
+public record Emp(string Name, int Age);
+
+var e1 = new Emp("Abc", 10);
+var e2 = new Emp("Abc", 10);
+
+WriteLine($"e1: {e1}");
+WriteLine($"e1 == e2: {e1 == e2}");
+
+#!markdown
+
+### OK, so what about this?
+
+#!csharp
+
+public record Person(string Name, int Age, string[] addresses);
+
+var addresses = new [] { "abc", "def" };
+
+var p1 = new Person("Abc", 10, addresses);
+var p2 = new Person("Abc", 10, addresses);
+
+WriteLine($"p1: {p1}");
+WriteLine($"p1 == p2 (when same data for addresses): {p1 == p2}");
+
+var diffAddresses = new [] { "def", "ghi" };
+var p3 = p2 with { addresses = diffAddresses };
+
+WriteLine($"p3: {p3}");
+WriteLine($"p1 == p3 (when different data for addresses): {p1 == p3}");
+
+#!markdown
+
+### And what about this?
+
+#!csharp
+
+public record Student(string Name, int Age, List<string> addresses);
+
+List<string> addresses = new() { "abc", "def" };
+
+var s1 = new Student("Abc", 10, addresses);
+var s2 = new Student("Abc", 10, addresses);
+
+WriteLine($"s1: {s1}");
+WriteLine($"s1 == s2 (when same data for addresses): {s1 == s2}");
+
+List<string> diffAddresses = new() { "def", "ghi" };
+var s3 = s2 with { addresses = diffAddresses };
+
+WriteLine($"s3: {s3}");
+WriteLine($"s1 == s3 (when different data for addresses): {s1 == s3}");
+
+#!markdown
+
+# So value equality works fine, but the ToString() doesn't work as expected.
+
+## What's the solution then?
+
+You should try using the [Language-Ext](https://github.com/louthy/language-ext) library.
