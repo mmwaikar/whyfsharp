@@ -1,6 +1,6 @@
 #!meta
 
-{"kernelInfo":{"defaultKernelName":"csharp","items":[{"name":"csharp","languageName":"C#","aliases":["c#","C#"]},{"name":"fsharp","languageName":"F#","aliases":["f#","F#"]},{"name":"vscode","aliases":["frontend"],"languageName":null}]}}
+{"kernelInfo":{"defaultKernelName":"csharp","items":[{"name":"csharp","aliases":["c#","C#"],"languageName":"C#"},{"name":"fsharp","aliases":["f#","F#"],"languageName":"F#"},{"name":"vscode","aliases":["frontend"]},{"name":"javascript","aliases":["js"],"languageName":"JavaScript"},{"name":"webview","aliases":[]},{"name":".NET","aliases":[]},{"name":"html","aliases":[],"languageName":"HTML"},{"name":"kql","aliases":[],"languageName":"KQL"},{"name":"mermaid","aliases":[],"languageName":"Mermaid"},{"name":"pwsh","aliases":["powershell"],"languageName":"PowerShell"},{"name":"sql","aliases":[],"languageName":"SQL"},{"name":"value","aliases":[]}]}}
 
 #!markdown
 
@@ -28,18 +28,21 @@ WriteLine($"e1 == e2: {e1 == e2}");
 
 public record Person(string Name, int Age, string[] addresses);
 
-var addresses = new [] { "abc", "def" };
+var addresses1 = new [] { "abc", "def" };
+var addresses2 = new [] { "abc", "def" };
 
-var p1 = new Person("Abc", 10, addresses);
-var p2 = new Person("Abc", 10, addresses);
+var p1 = new Person("Abc", 10, addresses1);
+var p2 = new Person("Abc", 10, addresses2);
 
-WriteLine($"p1: {p1}");
+WriteLine($"p1: {p1}, phone numbers: {String.Join(", ", p1.addresses)}");
+WriteLine($"p2: {p2}, phone numbers: {String.Join(", ", p2.addresses)}");
 WriteLine($"p1 == p2 (when same data for addresses): {p1 == p2}");
 
 var diffAddresses = new [] { "def", "ghi" };
 var p3 = p2 with { addresses = diffAddresses };
 
-WriteLine($"p3: {p3}");
+WriteLine();
+WriteLine($"p3: {p3}, phone numbers: {String.Join(", ", p3.addresses)}");
 WriteLine($"p1 == p3 (when different data for addresses): {p1 == p3}");
 
 #!markdown
@@ -50,10 +53,11 @@ WriteLine($"p1 == p3 (when different data for addresses): {p1 == p3}");
 
 public record Student(string Name, int Age, List<string> addresses);
 
-List<string> addresses = new() { "abc", "def" };
+List<string> addresses1 = new() { "abc", "def" };
+List<string> addresses2 = new() { "abc", "def" };
 
-var s1 = new Student("Abc", 10, addresses);
-var s2 = new Student("Abc", 10, addresses);
+var s1 = new Student("Abc", 10, addresses1);
+var s2 = new Student("Abc", 10, addresses2);
 
 WriteLine($"s1: {s1}");
 WriteLine($"s1 == s2 (when same data for addresses): {s1 == s2}");
@@ -61,12 +65,13 @@ WriteLine($"s1 == s2 (when same data for addresses): {s1 == s2}");
 List<string> diffAddresses = new() { "def", "ghi" };
 var s3 = s2 with { addresses = diffAddresses };
 
+WriteLine();
 WriteLine($"s3: {s3}");
 WriteLine($"s1 == s3 (when different data for addresses): {s1 == s3}");
 
 #!markdown
 
-# So value equality works fine, but the ToString() doesn't work as expected.
+# So neither the value equality works, nor the ToString() works as expected.
 
 ## What's the solution then?
 
