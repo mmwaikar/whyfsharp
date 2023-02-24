@@ -1,0 +1,59 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"csharp","items":[{"name":"csharp","languageName":"C#","aliases":["c#","C#"]},{"name":"vscode","aliases":["frontend"],"languageName":null}]}}
+
+#!fsharp
+
+#r "nuget: FSharp.Units, 1.0.13"
+
+#!fsharp
+
+open FSharp.Units
+open FSharp.Units.DataStorage
+
+#!fsharp
+
+type IPAddress = string
+
+type CPU = string
+
+// type DiskSize<[<Measure>] 't> = float<'t>
+
+type DiskSpec<[<Measure>] 't> = 
+    { Number: int
+      Capacity: float<'t> }
+
+// type RAMCapacity<[<Measure>] 't> = int<'t>
+
+type RAMSpec<[<Measure>] 't> = 
+    { Number: int
+      Capacity: int<'t> }
+
+type RAM<[<Measure>] 't> = 
+    { RAM: RAMSpec<'t> 
+      Name: string }
+
+type Disk<[<Measure>] 'u> = 
+    | NVME of DiskSpec<'u>
+    | SSD of DiskSpec<'u>
+    | HDD of DiskSpec<'u>
+
+type Server<[<Measure>] 'd, [<Measure>] 'r> = 
+    { CPU: CPU
+      PublicIP: IPAddress
+      MinimumRAMs: RAMSpec<'r>
+      MaximumRAMs: RAMSpec<'r>
+      Drives: seq<Disk<'d>> }
+
+#!fsharp
+
+let four32GBs = { Number = 4; Capacity = 32<GB> }
+let sixteen64GBs = { Number = 16; Capacity = 64<GB> }
+let minRamDdr4Ecc = { RAM = four32GBs; Name = "RAM DDR4 ECC" }
+let maxRamDdr4Ecc = { RAM = sixteen64GBs; Name = "RAM DDR4 ECC" }
+
+printfn $"minRamDdr4Ecc: {minRamDdr4Ecc}"
+
+#!fsharp
+
+let ax161 = { CPU = "Core i9"; PublicIP = "1.1.1.1"; MinimumRAMs = four32GBs; MaximumRAMs = sixteen64GBs; Drives = Seq.empty }

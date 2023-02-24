@@ -1,0 +1,24 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"csharp","items":[{"name":"csharp","languageName":"C#","aliases":["c#","C#"]},{"name":"pwsh","languageName":"PowerShell","aliases":["powershell"]},{"name":"vscode","aliases":["frontend"],"languageName":null},{"name":"sql","languageName":"SQL","aliases":[]}]}}
+
+#!fsharp
+
+#r "nuget: FSharp.Units, 1.0.13"
+
+#!fsharp
+
+open FSharp.Units
+open FSharp.Units.Length
+open FSharp.Units.Mass
+
+#!fsharp
+
+let aKg = 1.0<kg>
+let grams = kg.toGrams aKg
+printfn $"{aKg} kg = {grams} grams"
+
+#!fsharp
+
+let oneCm = 1.0<cm>
+printfn $"oneCm: {oneCm}"
