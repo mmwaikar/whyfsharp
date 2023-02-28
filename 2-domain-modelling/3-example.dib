@@ -1,15 +1,19 @@
 #!meta
 
-{"kernelInfo":{"defaultKernelName":"csharp","items":[{"name":"csharp","languageName":"C#","aliases":["c#","C#"]},{"name":"vscode","aliases":["frontend"],"languageName":null}]}}
+{"kernelInfo":{"defaultKernelName":"csharp","items":[{"name":"csharp","languageName":"C#","aliases":["c#","C#"]},{"name":"vscode","aliases":["frontend"],"languageName":null},{"name":"javascript","aliases":["js"],"languageName":"JavaScript"},{"name":"webview","aliases":[]},{"name":".NET","aliases":[],"languageName":null}]}}
 
 #!fsharp
 
 #r "nuget: FSharp.Units, 1.0.13"
+#r "nuget: FSharp.UMX, 1.1.0"
+#r "nuget: FsToolkit.ErrorHandling, 4.4.0"
 
 #!fsharp
 
 open FSharp.Units
 open FSharp.Units.DataStorage
+open FSharp.UMX
+open FsToolkit.ErrorHandling
 
 #!fsharp
 
@@ -57,3 +61,37 @@ printfn $"minRamDdr4Ecc: {minRamDdr4Ecc}"
 #!fsharp
 
 let ax161 = { CPU = "Core i9"; PublicIP = "1.1.1.1"; MinimumRAMs = four32GBs; MaximumRAMs = sixteen64GBs; Drives = Seq.empty }
+
+#!fsharp
+
+[<Measure>] type customerId
+[<Measure>] type orderId
+[<Measure>] type kg
+
+#!fsharp
+
+type Order =
+    {
+        id : string<orderId>
+        customer : string<customerId>
+        quantity : int<kg>
+    }
+
+#!fsharp
+
+let order =
+    {
+        id = % "oId"
+        customer = % "cId"
+        quantity = % 42
+    }
+
+let printOrder (order : Order) =
+    printfn "orderId=%s customerId=%s quantity=%d" %order.id %order.customer %order.quantity
+
+printOrder order
+
+#!fsharp
+
+[<Measure>] type GB
+[<Measure>] type TB

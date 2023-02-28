@@ -1,0 +1,41 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"fsharp","items":[{"name":"fsharp","languageName":"F#","aliases":["f#","F#"]},{"name":"mermaid","languageName":"Mermaid","aliases":[]},{"name":"vscode","aliases":["frontend"],"languageName":null}]}}
+
+#!fsharp
+
+#r "nuget: FsToolkit.ErrorHandling, 4.4.0"
+
+#!fsharp
+
+open FsToolkit.ErrorHandling
+
+#!fsharp
+
+let random = Random()
+
+let callIntegerApi () = 
+    if random.Next() % 7 = 0 then
+        Error "Something went wrong"
+    else
+        Ok (random.Next(), random.Next())
+
+let tryDivideIntegers (x, y) =
+    if x = 0 || y = 0 then
+        Error "Can't divide by Zero"
+    else
+        Ok (x / y)
+
+let stringEvenNumbers x = 
+    if x % 2 = 0 then
+        Ok $"{x}" // F# 5 string interpolation 😊
+    else 
+        Error "Can't parse odd numbers"
+
+#!fsharp
+
+let xx = result {
+    let! randomIntPair = callIntegerApi ()
+    let! divideResult = tryDivideIntegers randomIntPair
+    return! stringEvenNumbers divideResult
+}
