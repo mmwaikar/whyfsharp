@@ -1,0 +1,151 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"fsharp","items":[{"aliases":[],"languageName":"fsharp","name":"fsharp"}]}}
+
+#!fsharp
+
+#r "nuget: FsToolkit.ErrorHandling, 4.11.0"
+
+#!fsharp
+
+open System
+open FsToolkit.ErrorHandling
+
+#!markdown
+
+Let's see an example of the result data type which can have either of the two values (this is also present in Scala as Either, however in Scala, the left part is an error, whereas the Right part is Success). In F#, the left part is Ok, whereas the right part is Error.
+
+#!fsharp
+
+let divide nr dr =
+    if (dr = 0) then Error "Cannot divide by 0."
+    else Ok (nr / dr)
+
+#!markdown
+
+The type of the divide function is int -> int -> Result<int, string>.
+
+#!fsharp
+
+let numerator = 4
+let denominator = 2
+
+let ok = divide numerator denominator
+let error = divide numerator 0
+
+#!markdown
+
+Below is how we pattern match on a result value.
+
+#!fsharp
+
+match ok with
+| Ok result -> printfn $"The result of dividing {numerator} with {denominator} is: {result}"
+| Error e -> printfn $"Error: {e}"
+
+#!fsharp
+
+match error with
+| Ok result -> printfn $"The result of dividing {numerator} with {denominator} is: {result}"
+| Error e -> printfn $"Error: {e}"
+
+#!markdown
+
+Careful use of Result values also helps us to reduce / eliminate NPEs in the code. **Not just that, it also helps us communicate the cause of the problems.**
+
+#!markdown
+
+Again, you might say that this pattern matching is not a big deal. We could've used the trusted old if-else statement? So, let's see how we can use multiple result values together. This is something which is not possible in C#. But `FsToolkit.ErrorHandling` makes it a walk in the park.
+
+#!fsharp
+
+let tryParseInt (str: string) =
+    match Int32.TryParse str with
+    | (true, i) -> Ok i
+    | _ -> Error $"Could not parse string {str} to int."
+
+let printResult result =
+    match result with
+    | Ok i -> printfn $"The result is: {i}"
+    | Error e -> printfn $"Error: {e}"
+
+let printResultWithErrors (result: Result<'a list, 'b list>) =
+    match result with
+    | Ok is -> printfn $"The result is: {is}"
+    | Error es -> printfn $"Errors: {es}"
+
+#!fsharp
+
+let addAllOks = result {
+    let! x = tryParseInt "7"
+    let! y = tryParseInt "5"
+    let! z = tryParseInt "2"
+    return x + y + z
+}
+printResult addAllOks
+
+#!fsharp
+
+let addOksWithError = result {
+    let! x = tryParseInt "7"
+    let! y = tryParseInt "sad"
+    let! z = tryParseInt "2"
+    return x + y + z
+}
+printResult addOksWithError
+
+#!markdown
+
+If you have a list of string values, and you use the above function, you get a list of result values.
+
+#!fsharp
+
+let listOfResults =
+    ["1"; "2"; "3"]
+    |> List.map tryParseInt
+
+printfn $"listOfResults (which is of type list<Result<int, string>>):"
+listOfResults |> List.iter printResult
+
+#!markdown
+
+But what if you want a Result<list<int>, string>? Simple, use `sequenceResultM` method.
+
+#!fsharp
+
+let resultList = 
+    ["1"; "2"; "3"]
+    |> List.map tryParseInt
+    |> List.sequenceResultM
+
+printfn $"resultList (which is of type Result<list<int>, string>):"
+printResult resultList
+
+#!markdown
+
+But what if one of the values is an error?
+
+#!fsharp
+
+let resultList = 
+    ["1"; "foo"; "3"]
+    |> List.map tryParseInt
+    |> List.sequenceResultM
+
+printfn $"resultList (which is of type Result<list<int>, string>):"
+printResult resultList
+
+#!markdown
+
+No, but we don't want that. We want to see all the errors. That's where `sequenceResultA` method comes into picture.
+You may have guessed that the `M` stands for `Monad` whereas the `A` stands for `Applicative`.
+
+#!fsharp
+
+let resultListWithAllErrors = 
+    ["1"; "foo"; "3"; "bar"]
+    |> List.map tryParseInt
+    |> List.sequenceResultA
+
+printfn $"resultListWithAllErrors (which is of type Result<list<int>, list<string>>):"
+printResultWithErrors resultListWithAllErrors
