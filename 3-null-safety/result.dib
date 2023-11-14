@@ -55,7 +55,29 @@ Careful use of Result values also helps us to reduce / eliminate NPEs in the cod
 
 #!markdown
 
-Again, you might say that this pattern matching is not a big deal. We could've used the trusted old if-else statement? So, let's see how we can use multiple result values together. This is something which is not possible in C#. But `FsToolkit.ErrorHandling` makes it a walk in the park.
+### Again, you might say that this pattern matching is not a big deal. We could've used the trusted old if-else statement?
+
+#!markdown
+
+First, let's see how to get the value of a result safely.
+
+#!fsharp
+
+let okVal = Result.defaultValue 0 ok
+printfn $"okVal: {okVal}"
+
+#!markdown
+
+Or in an idiomatic F# way -
+
+#!fsharp
+
+let iokVal = ok |> Result.defaultValue 0
+printfn $"iokVal: {iokVal}"
+
+#!markdown
+
+Now, let's see how we can use multiple result values together. This is something which is not possible in C#. But `FsToolkit.ErrorHandling` makes it a walk in the park.
 
 #!fsharp
 
