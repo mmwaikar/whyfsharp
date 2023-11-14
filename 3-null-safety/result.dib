@@ -149,3 +149,95 @@ let resultListWithAllErrors =
 
 printfn $"resultListWithAllErrors (which is of type Result<list<int>, list<string>>):"
 printResultWithErrors resultListWithAllErrors
+
+#!markdown
+
+Another compelling example of how to compose result values is related to validation. It is taken from the [Results](https://learn.microsoft.com/en-us/dotnet/fsharp/language-reference/results) page, but improved with the use of `FsToolkit.ErrorHandling`.
+
+#!fsharp
+
+// Define a simple type which has fields that can be validated
+type Request =
+    { Name: string
+      Email: string }
+
+// Define some logic for what defines a valid name.
+//
+// Generates a Result which is an Ok if the name validates;
+// otherwise, it generates a Result which is an Error.
+let validateName req =
+    match req.Name with
+    | null -> Error "No name found."
+    | "" -> Error "Name is empty."
+    | "bananas" -> Error "Bananas is not a name."
+    | _ -> Ok req
+
+// Similarly, define some email validation logic.
+let validateEmail req =
+    match req.Email with
+    | null -> Error "No email found."
+    | "" -> Error "Email is empty."
+    | s when s.EndsWith("bananas.com") -> Error "No email from bananas.com is allowed."
+    | _ -> Ok req
+
+let validateRequest reqResult =
+    reqResult
+    |> Result.bind validateName
+    |> Result.bind validateEmail
+
+let test() =
+    // Now, create a Request and pattern match on the result.
+    let req1 = { Name = "Phillip"; Email = "phillip@contoso.biz" }
+    let res1 = validateRequest (Ok req1)
+    match res1 with
+    | Ok req -> printfn $"My request was valid! Name: {req.Name}, Email: {req.Email}"  
+    | Error e -> printfn $"Error: {e}"
+    // Prints: "My request was valid!  Name: Phillip, Email: phillip@consoto.biz"
+
+    let req2 = { Name = "Phillip"; Email = "phillip@bananas.com" }
+    let res2 = validateRequest (Ok req2)
+    match res2 with
+    | Ok req -> printfn $"My request was valid! Name: {req.Name}, Email: {req.Email}"  
+    | Error e -> printfn $"Error: {e}"
+    // Prints: "Error: No email from bananas.com is allowed."
+
+    let req3 = { Name = ""; Email = "phillip@bananas.com" }
+    let res3 = validateRequest (Ok req3)
+    match res3 with
+    | Ok req -> printfn $"My request was valid! Name: {req.Name}, Email {req.Email}"
+    | Error e -> printfn $"Error: {e}"
+
+test()
+
+#!markdown
+
+Notice that for the 3rd request, even though there were 2 errors, only the first one was reported. This is an example of a short circuiting behavior. So let's see how to get all the errors at once using `FsToolkit's Validation` data type.
+
+#!fsharp
+
+let printValidated (validated: Validation<'a, 'b>) =
+    match validated with
+    | Ok i -> printfn $"The result is: {i}"
+    | Error es -> printfn $"Errors: {es}"
+
+let addResult1 = validation {
+    let! x = tryParseInt "1"
+    and! y = tryParseInt "str1"
+    return x + y
+}
+printValidated addResult1
+
+let addResult2 = validation {
+    let! x = tryParseInt "1"
+    and! y = tryParseInt "str2"
+    return x + y
+}
+printValidated addResult2
+
+let combinedResult = 
+    validation {
+        let! x = addResult1
+        and! y = addResult2
+        return x + y
+    }
+printValidated combinedResult
