@@ -1,0 +1,29 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"fsharp","items":[{"aliases":[],"languageName":"fsharp","name":"fsharp"}]}}
+
+#!fsharp
+
+let getOne = async { return 1 }
+let getTwo = async { return 2 }
+let getThree = async { return 3 }
+
+let getResult a b c = async { return a + b + c }
+
+#!fsharp
+
+let getData() =
+    async {
+        let! one = getOne
+        let! two = getTwo
+        let! three = getThree
+
+        let! result = getResult one two three
+        return result / 2
+    }
+    |> Async.RunSynchronously
+
+#!fsharp
+
+let data = getData()
+data

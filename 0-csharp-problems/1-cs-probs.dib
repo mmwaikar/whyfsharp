@@ -8,13 +8,13 @@
 
 #!markdown
 
-- Older languages have no REPL (though you can use [dotnet-repl](https://github.com/jonsequitur/dotnet-repl)
+- Older languages have no REPL (though you can use [dotnet-repl](https://github.com/jonsequitur/dotnet-repl))
 - **C# (and Java) are built with wrong defaults**
 
 #!markdown
 
-| Wrong (C#, Java) | Right (F#, Scala) |
-|------------------|-------------------|
+| Wrong (C#, Java) | Right (Clojure, F#, Scala) |
+|------------------|----------------------------|
 | Reference Equality | Value Equality |
 | Mutable collections | Immutable collections |
 
