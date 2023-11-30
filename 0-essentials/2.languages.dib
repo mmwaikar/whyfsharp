@@ -1,0 +1,46 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"csharp","items":[{"aliases":[],"name":".NET"},{"aliases":["C#","c#"],"languageName":"C#","name":"csharp"},{"aliases":["F#","f#"],"languageName":"F#","name":"fsharp"},{"aliases":[],"languageName":"HTML","name":"html"},{"aliases":[],"languageName":"HTTP","name":"http"},{"aliases":["js"],"languageName":"JavaScript","name":"javascript"},{"aliases":[],"languageName":"KQL","name":"kql"},{"aliases":[],"languageName":"Mermaid","name":"mermaid"},{"aliases":["powershell"],"languageName":"PowerShell","name":"pwsh"},{"aliases":[],"languageName":"SQL","name":"sql"},{"aliases":[],"name":"value"},{"aliases":["frontend"],"name":"vscode"},{"aliases":[],"name":"webview"}]}}
+
+#!markdown
+
+# Desirable features of a Programming Language
+
+#!markdown
+
+- It should have a [REPL](https://en.wikipedia.org/wiki/Read-eval-print_loop) called Read-Eval-Print-Loop. A REPL is an interactive text-based interface for incrementally creating a program, providing it with input, and seeing its output. While historically one usually interacts with a REPL through a terminal, there are also a number of GUI-based REPLs e.g. a Notebook is just a visual REPL. **And, it should be possible for me to experiment with third party libraries in a REPL.**
+- It should compile to multiple targets (with JS being the secondary target, at the very least)
+- It should come from a family of languages (e.g. ML, Lisp etc., so when you understand the syntax for one of the languages in the family, you'll understand code written in other languages of the same family)
+- I should be able to write full-stack / AI / ML applications using the same language
+
+#!markdown
+
+#### Other desirable features
+
+- I should be able to write a function without wrapping it in a class (Functional Programming)
+- Value equality should be the default
+- Type Inference (for a statically typed language)
+- Discriminated unions (a pack of cards example)
+- When it comes to building UIs, I want widgets (e.g. Tree, Data Grid etc., no div, p1 business)
+
+#!markdown
+
+### Compilation targets of some of the languages
+
+| Language | Default Target      | WebAssembly (WASM) | JS | TS | Dart | Python | Rust | C++ (Native) |
+|----------|---------------------|--------------------|----|----|------|--------|------|--------------|
+| [F#](https://fsharp.org/) | .Net | [Bolero](https://fsbolero.io/) | [Fable](https://fable.io/) | [Fable](https://fable.io/docs/#available-targets) | Fable | Fable | Fable | |
+| [Clojure](https://clojure.org/) | JVM | | [ClojureScript](https://clojurescript.org/) | | [ClojureDart](https://github.com/Tensegritics/ClojureDart) | [clj-python](https://github.com/clj-python/libpython-clj) | | [Jank (Clojure on C++)](https://jank-lang.org/) |
+| [Scala](https://www.scala-lang.org/) | JVM | | [Scala.js](https://www.scala-js.org/) | | | | | [Scala Native](https://scala-native.org/en/stable/) |
+| [Dart](https://dart.dev/) | Native | | [Dart Web](https://dart.dev/overview#web-platform) | | NA | | | |
+| [Python](https://www.python.org/) | Native | [Pyodide](https://pyodide.org/en/stable/) | | | | Self | | |
+
+#!markdown
+
+### Language families
+
+| Family | Languages |
+|--------|-----------|
+| Lisp | [Clojure](https://clojure.org/), [Racket](https://racket-lang.org/), [Scheme](https://scheme.com/tspl4/), [Common Lisp](https://common-lisp.net/) |
+| ML | [F#](https://fsharp.org/), [OCaml](https://ocaml.org/), [ReScript](https://rescript-lang.org/) |
+| C | C, C++, Java, C#, JS |

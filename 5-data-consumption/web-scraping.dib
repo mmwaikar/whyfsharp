@@ -1,0 +1,33 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"fsharp","items":[{"aliases":["C#","c#"],"languageName":"C#","name":"csharp"},{"aliases":["F#","f#"],"languageName":"F#","name":"fsharp"},{"aliases":["js"],"languageName":"JavaScript","name":"javascript"},{"aliases":["frontend"],"name":"vscode"},{"aliases":[],"name":"webview"}]}}
+
+#!fsharp
+
+#r "nuget: FSharp.Data, 6.3.0"
+
+#!fsharp
+
+open FSharp.Data
+
+#!fsharp
+
+[<Literal>]
+let Stocks_Url = "https://groww.in/blog/best-it-sector-stocks"
+type StockProvider = HtmlProvider<Stocks_Url>
+
+#!fsharp
+
+let best10Stocks = StockProvider.Load(Stocks_Url).Tables.``10 Best IT Stocks in India``
+let rows = best10Stocks.Rows
+let firstRow = rows |> Seq.head
+firstRow
+
+#!fsharp
+
+let printRow (row: StockProvider.``10BestItStocksInIndia``.Row) =
+    printfn $"Sr. No.: {row.``S.No.``}, Name: {row.``IT Sector Stock List``}"
+
+#!fsharp
+
+rows |> Seq.iter printRow
