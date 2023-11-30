@@ -8,8 +8,8 @@
 
 #!markdown
 
-- It should have a [REPL](https://en.wikipedia.org/wiki/Read-eval-print_loop) (Read-Eval-Print-Loop). A REPL is an interactive text-based interface for incrementally creating a program, providing it with input, and seeing its output. While historically one usually interacts with a REPL through a terminal, there are also a number of GUI-based REPLs e.g. a Notebook is just a visual REPL. **And, it should be possible for me to experiment with third party libraries in a REPL.**
-- It should compile to multiple targets (with JS being the secondary target, at the least)
+- It should have a [REPL](https://en.wikipedia.org/wiki/Read-eval-print_loop) called Read-Eval-Print-Loop. A REPL is an interactive text-based interface for incrementally creating a program, providing it with input, and seeing its output. While historically one usually interacts with a REPL through a terminal, there are also a number of GUI-based REPLs e.g. a Notebook is just a visual REPL. **And, it should be possible for me to experiment with third party libraries in a REPL.**
+- It should compile to multiple targets (with JS being the secondary target, at the very least)
 - It should come from a family of languages (e.g. ML, Lisp etc., so when you understand the syntax for one of the languages in the family, you'll understand code written in other languages of the same family)
 - I should be able to write full-stack / AI / ML applications using the same language
 
@@ -17,7 +17,7 @@
 
 #### Other desirable features
 
-- I should be able to write a function without wrapping it in a class (Functional programming)
+- I should be able to write a function without wrapping it in a class (Functional Programming)
 - Value equality should be the default
 - Type Inference (for a statically typed language)
 - Discriminated unions (a pack of cards example)
