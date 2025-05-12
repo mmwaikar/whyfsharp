@@ -2,6 +2,12 @@
 
 > Notebooks explaining why one should embrace :hugs: F#.
 
+## Should you use C# in 2025?
+
+The question is not of adopting F# and abandoning C# completely, but minimizing the use of C#. Just go through these 5 simple but eye-opening questions whether you should be using [C# in 2025?](/1-csharp-problems/0-is-this-ok.ipynb).
+
+## The F# / FP journey
+
 Before we look into some of the features of F#, let's dive into why to use Functional Programming (FP) languages.
 
 ---
@@ -47,7 +53,7 @@ I've used 3 FP languages, out of which 2 are on JVM and 1 on DotNet.
 - F# is a modern functional first, mixed FP-OO language from the ML family
 - Cross platform
 - Strong type inference
-- Ability to compile to [multiple targets](https://fable.io/docs/#available-targets) (through [Fable](https://fable.io/), JS, Rust, Python, Dart)
+- Ability to compile to [multiple targets](https://fable.io/docs/#available-targets) (JS, Rust, Python, Dart - through [Fable](https://fable.io/))
 
 ## Static vs. Dynamic
 
